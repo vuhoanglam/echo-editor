@@ -6,7 +6,7 @@
           <Tooltip>
             <TooltipTrigger class="w-[160px]">
               <Select v-model:model-value="node.attrs.language">
-                <SelectTrigger class="w-[160px] border-none outline-none text-sm h-7 hover:bg-[#5a5d5e4f]">
+                <SelectTrigger class="w-[160px] border-none outline-hidden text-sm h-7 hover:bg-[#5a5d5e4f]">
                   <SelectValue placeholder="Select language" />
                 </SelectTrigger>
                 <SelectContent
@@ -14,7 +14,7 @@
                   @close-auto-focus="e => e.preventDefault()"
                 >
                   <SelectItem
-                    class="focus:bg-[#5a5d5e4f] focus:text-[#fff]"
+                    class="focus:bg-[#5a5d5e4f] focus:text-white"
                     v-for="lang in languages"
                     :key="lang.value"
                     :value="lang.value"
@@ -35,7 +35,7 @@
             <TooltipTrigger>
               <div
                 @click="copyCode"
-                class="h-7 w-7 hover:bg-[#5a5d5e4f] rounded-sm flex justify-center items-center cursor-pointer"
+                class="h-7 w-7 hover:bg-[#5a5d5e4f] rounded-xs flex justify-center items-center cursor-pointer"
               >
                 <Icon name="Copy" class="w-4 h-4"></Icon>
               </div>
@@ -51,7 +51,7 @@
             <TooltipTrigger>
               <div
                 @click="toggleLineNumbers"
-                class="h-7 w-7 hover:bg-[#5a5d5e4f] rounded-sm flex justify-center items-center cursor-pointer"
+                class="h-7 w-7 hover:bg-[#5a5d5e4f] rounded-xs flex justify-center items-center cursor-pointer"
                 :class="{ 'bg-[#5a5d5e4f]': node.attrs.lineNumbers }"
               >
                 <Icon name="List" class="w-4 h-4"></Icon>
@@ -68,7 +68,7 @@
             <TooltipTrigger>
               <div
                 @click="toggleWordWrap"
-                class="h-7 w-7 hover:bg-[#5a5d5e4f] rounded-sm flex justify-center items-center cursor-pointer"
+                class="h-7 w-7 hover:bg-[#5a5d5e4f] rounded-xs flex justify-center items-center cursor-pointer"
                 :class="{ 'bg-[#5a5d5e4f]': node.attrs.wordWrap }"
               >
                 <Icon name="WrapText" class="w-4 h-4"></Icon>
@@ -84,7 +84,7 @@
           <Tooltip>
             <TooltipTrigger>
               <Select v-model:model-value="node.attrs.tabSize">
-                <SelectTrigger class="w-[60px] border-none outline-none text-sm h-7 hover:bg-[#5a5d5e4f]">
+                <SelectTrigger class="w-[60px] border-none outline-hidden text-sm h-7 hover:bg-[#5a5d5e4f]">
                   <Icon name="IndentIncrease" class="w-4 h-4" />
                 </SelectTrigger>
                 <SelectContent
@@ -92,7 +92,7 @@
                   @close-auto-focus="e => e.preventDefault()"
                 >
                   <SelectItem
-                    class="focus:bg-[#5a5d5e4f] focus:text-[#fff]"
+                    class="focus:bg-[#5a5d5e4f] focus:text-white"
                     v-for="size in tabSizes"
                     :key="size"
                     :value="size"

@@ -156,7 +156,7 @@ defineExpose({ editor })
 <template>
   <div
     v-if="editor"
-    class="echo-editor rounded-[0.5rem] bg-background shadow outline outline-1 relative"
+    class="echo-editor rounded-lg bg-background shadow-sm outline-solid outline-1 relative"
     :class="[
       editorClass,
       {
@@ -170,7 +170,7 @@ defineExpose({ editor })
     <div
       class="relative flex flex-col overflow-hidden"
       :class="{
-        '!fixed bg-background inset-0 z-[10]  w-full h-full m-0 rounded-[0.5rem]': isFullscreen,
+        'fixed! bg-background inset-0 z-10  w-full h-full m-0 rounded-lg': isFullscreen,
       }"
     >
       <Menubars v-if="!hideMenubar" :editor="editor" :disabled="disabled" />

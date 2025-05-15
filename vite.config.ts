@@ -2,15 +2,14 @@ import path from 'path'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import dts from 'vite-plugin-dts'
-import tailwind from 'tailwindcss'
-import autoprefixer from 'autoprefixer'
-import visualizer from 'rollup-plugin-visualizer'
+import tailwindcss from '@tailwindcss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
+    tailwindcss(),
     vue(),
     // visualizer({
     //   open: true,
@@ -39,9 +38,6 @@ export default defineConfig({
     },
   },
   css: {
-    postcss: {
-      plugins: [tailwind(), autoprefixer()],
-    },
     preprocessorOptions: {
       scss: {
         charset: false,

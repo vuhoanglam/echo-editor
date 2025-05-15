@@ -48,7 +48,7 @@ onMounted(() => {
 <template>
   <div
     ref="target"
-    class="p-2 bg-white rounded-lg dark:bg-black shadow-sm border border-neutral-200 dark:border-neutral-800"
+    class="p-2 bg-white rounded-lg dark:bg-black shadow-xs border border-neutral-200 dark:border-neutral-800"
   >
     <form @submit.prevent="handleSubmit" class="flex flex-col gap-2">
       <Label> {{ t('editor.link.dialog.text') }} </Label>
