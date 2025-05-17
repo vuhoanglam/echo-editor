@@ -1,279 +1,170 @@
-@utility echo-editor {
-  .tiptap {
-    caret-color: black;
-    outline: 0;
-    padding: 0.5rem 1rem;
-    min-height: 180px;
-  }
-
-  .tiptap .img-placeholder {
-    width: fit-content;
-    position: relative;
-    backdrop-filter: blur(4px);
-    background-color: rgb(255 255 255 / 0.3);
-  }
-
-  .tiptap .img-placeholder:before {
-    content: '';
-    box-sizing: border-box;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 24px;
-    height: 24px;
-    margin: -12px 0 0 -12px;
-    border: 3px solid currentColor;
-    border-top-color: transparent;
-    border-radius: 9999px;
-    animation: spin 1s linear infinite;
-  }
-
-  .tiptap .highlight-paragraph {
-    background-color: rgb(0 0 0 / 0.1);
-  }
-
-  .dark .tiptap {
-    caret-color: white;
-  }
-
-  .dark .tiptap .highlight-paragraph {
-    background-color: rgb(255 255 255 / 0.2);
-  }
-
-  /* Table styles */
-  .tiptap .tableWrapper {
-    overflow-x: auto;
-  }
-
-  .tiptap .tableWrapper table {
-    overflow: hidden;
-    display: table;
-  }
-
-  .tiptap .tableWrapper table .column-resize-handle {
-    bottom: -2px;
-    position: absolute;
-    right: -0.25rem;
-    top: 0;
-    width: 0.25rem;
-    z-index: 10;
-    pointer-events: none;
-    background-color: var(--primary);
-  }
-
-  .tiptap .tableWrapper table .resize-cursor {
-    cursor: 'col-resize';
-  }
-
-  .tiptap .tableWrapper table .selectedCell {
-    background-color: rgb(0 0 0 / 0.05);
-    border-color: rgb(0 0 0 / 0.2);
-    border-style: double;
-  }
-
-  .dark .tiptap .tableWrapper table .selectedCell {
-    background-color: rgb(255 255 255 / 0.1);
-    border-color: rgb(255 255 255 / 0.2);
-  }
-
-  /* Column styles */
-  .tiptap > *:first-child,
-  .tiptap [data-type='column'] > * {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-
-  .tiptap [data-type='columns'].focus [data-type='column'],
-  .tiptap [data-type='columns']:hover [data-type='column'] {
-    background-color: var(--accent);
-  }
-
-  .tiptap [data-type='columns'] [data-type='column'].focus {
-    background-color: var(--accent);
-  }
-
-  .tiptap [data-type='columns']::before,
-  .tiptap [data-type='columns']::after {
-    content: none !important;
-  }
-
-  .tiptap [data-type='column'] {
-    border-radius: var(--radius);
-    border: 1px solid transparent;
-    padding: 0.25rem;
-    transition: border 160ms cubic-bezier(0.45, 0.05, 0.55, 0.95);
-  }
-
-  .tiptap [data-type='column']:hover {
-    border-color: rgb(249 250 251);
-  }
-
-  .dark .tiptap [data-type='column']:hover {
-    border-color: rgb(17 24 39);
-  }
-
-  .tiptap [data-type='column']:has(.is-active),
-  .tiptap [data-type='column'].focus {
-    border-color: rgb(245 245 245);
-  }
-
-  .dark .tiptap [data-type='column']:has(.is-active),
-  .dark .tiptap [data-type='column'].focus {
-    border-color: rgb(23 23 23);
-  }
-
-  /* Horizontal rule */
-  .tiptap [data-type='horizontalRule'] {
-    transition: all 100ms ease-in-out;
-    cursor: pointer;
-  }
-
-  .tiptap [data-type='horizontalRule'].ProseMirror-selectednode {
-    background-color: rgb(0 0 0 / 0.05);
-  }
-
-  .dark .tiptap [data-type='horizontalRule'].ProseMirror-selectednode {
-    background-color: rgb(255 255 255 / 0.1);
-  }
-
-  .tiptap [data-type='horizontalRule'].ProseMirror-selectednode hr {
-    border-top-color: rgb(0 0 0 / 0.3);
-  }
-
-  .dark .tiptap [data-type='horizontalRule'].ProseMirror-selectednode hr {
-    border-top-color: rgb(255 255 255 / 0.3);
-  }
-
-  .tiptap [data-type='horizontalRule']:hover:not(.ProseMirror-selectednode) {
-    background-color: rgb(0 0 0 / 0.05);
-  }
-
-  .dark .tiptap [data-type='horizontalRule']:hover:not(.ProseMirror-selectednode) {
-    background-color: rgb(255 255 255 / 0.1);
-  }
-
-  .tiptap :not(.dragging) .ProseMirror-selectednode {
-    outline: none;
-    background-color: rgb(0 0 0 / 0.1);
-    box-shadow: none;
-    transition-property: color, background-color, border-color;
-  }
-
-  .dark .tiptap :not(.dragging) .ProseMirror-selectednode {
-    background-color: rgb(255 255 255 / 0.2);
-  }
-
-  .tiptap .selection {
-    display: inline;
-  }
-
-  .tiptap .selection,
-  .tiptap *::selection {
-    background-color: rgb(0 0 0 / 0.1);
-  }
-
-  .dark .tiptap .selection,
-  .dark .tiptap *::selection {
-    background-color: rgb(255 255 255 / 0.2);
-  }
-
-  /* Placeholder styles */
-  .tiptap .is-empty::before {
-    content: attr(data-placeholder);
-    float: left;
-    color: #adb5bd;
-    pointer-events: none;
-    width: 100%;
-    height: 0;
-  }
-
-  .tiptap .is-editor-empty:first-child::before {
-    content: attr(data-placeholder);
-    float: left;
-    color: #adb5bd;
-    pointer-events: none;
-    width: 100%;
-    height: 0;
-  }
-
-  .tiptap p.is-editor-empty:first-child::before {
-    float: left;
-    height: 0;
-    color: #adb5bd;
-    pointer-events: none;
-    width: 100%;
-    content: attr(data-placeholder);
-  }
-
-  .tiptap .ProseMirror-gapcursor {
-    position: relative;
-    width: 100%;
-    max-width: 42rem;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .tiptap .ProseMirror-gapcursor:after {
-    border-top-color: rgb(0 0 0 / 0.4);
-    width: 100%;
-    top: -1.5em;
-    max-width: 42rem;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-  }
-
-  .dark .tiptap .ProseMirror-gapcursor:after {
-    border-top-color: rgb(255 255 255 / 0.4);
-  }
-
-  .tiptap .iframe-wrapper.focus > div {
-    outline-color: var(--primary);
-    outline-width: 4px;
-    outline-style: solid;
-  }
-
-  /* Search result styles */
-  .echo-editor-search-result {
-    background-color: rgb(253 224 71);
-  }
-
-  .echo-editor-search-result-current {
-    background-color: rgb(248 113 113);
-  }
+.echo-editor {
+  /*  */
+}
+.echo-editor .tiptap {
+  @apply caret-black dark:caret-white outline-0 px-4 py-2 sm:px-20 sm:py-6;
+  min-height: 180px;
+  /* Table */
+  /* Column */
+}
+.echo-editor .tiptap .img-placeholder {
+  width: fit-content;
+  position: relative;
+  @apply backdrop-blur-sm bg-white/30;
+}
+.echo-editor .tiptap .img-placeholder:before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  margin: -12px 0 0 -12px;
+  @apply animate-spin border-current border-t-transparent rounded-full border-[3px] inline-block;
+}
+.echo-editor .tiptap .highlight-paragraph {
+  @apply bg-black/10 dark:bg-white/20;
+}
+.echo-editor .tiptap .tableWrapper {
+  @apply overflow-x-auto;
+}
+.echo-editor .tiptap .tableWrapper table {
+  overflow: hidden;
+  display: table;
+}
+.echo-editor .tiptap .tableWrapper table .column-resize-handle {
+  @apply -bottom-[2px] absolute -right-1 top-0 w-1 z-10 pointer-events-none bg-primary;
+}
+.echo-editor .tiptap .tableWrapper table .resize-cursor {
+  cursor: "col-resize";
+}
+.echo-editor .tiptap .tableWrapper table .selectedCell {
+  @apply bg-black/5 border-black/20 border-double;
+  @apply dark:bg-white/10 dark:border-white/20;
+}
+.echo-editor .tiptap > *:first-child,
+.echo-editor .tiptap [data-type=column] > * {
+  @apply first:mt-0 last:mb-0;
+}
+.echo-editor .tiptap [data-type=columns].focus [data-type=column], .echo-editor .tiptap [data-type=columns]:hover [data-type=column] {
+  @apply bg-accent;
+}
+.echo-editor .tiptap [data-type=columns] [data-type=column].focus {
+  @apply bg-accent;
+}
+.echo-editor .tiptap [data-type=columns]::before,
+.echo-editor .tiptap [data-type=columns]::after {
+  content: none !important;
+}
+.echo-editor .tiptap [data-type=column] {
+  @apply rounded border border-solid border-transparent p-1;
+  transition: border 160ms cubic-bezier(0.45, 0.05, 0.55, 0.95);
+}
+.echo-editor .tiptap [data-type=column]:hover {
+  @apply border-gray-50 dark:border-gray-900;
+}
+.echo-editor .tiptap [data-type=column]:has(.is-active), .echo-editor .tiptap [data-type=column].focus {
+  @apply border-neutral-100 dark:border-neutral-900;
+}
+.echo-editor .tiptap [data-type=horizontalRule] {
+  @apply transition-all duration-100 ease-in-out cursor-pointer;
+}
+.echo-editor .tiptap [data-type=horizontalRule].ProseMirror-selectednode {
+  @apply bg-black/5 dark:bg-white/10;
+}
+.echo-editor .tiptap [data-type=horizontalRule].ProseMirror-selectednode hr {
+  @apply border-t-black/30 dark:border-t-white/30;
+}
+.echo-editor .tiptap [data-type=horizontalRule]:hover:not(.echo-editor .tiptap [data-type=horizontalRule].ProseMirror-selectednode) {
+  @apply bg-black/5;
+  @apply dark:bg-white/10;
+}
+.echo-editor .tiptap :not(.dragging) .ProseMirror-selectednode {
+  @apply outline-none  bg-black/10 dark:bg-white/20 shadow-none transition-colors;
+}
+.echo-editor .tiptap .selection {
+  @apply inline;
+}
+.echo-editor .tiptap .selection,
+.echo-editor .tiptap *::selection {
+  @apply bg-black/10 dark:bg-white/20;
+}
+.echo-editor .tiptap .is-empty::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: #adb5bd;
+  pointer-events: none;
+  width: 100%;
+  height: 0;
+}
+.echo-editor .tiptap .is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: #adb5bd;
+  pointer-events: none;
+  width: 100%;
+  height: 0;
+}
+.echo-editor .tiptap p.is-editor-empty:first-child::before {
+  float: left;
+  height: 0;
+  color: #adb5bd;
+  pointer-events: none;
+  width: 100%;
+  content: attr(data-placeholder);
+}
+.echo-editor .tiptap .ProseMirror-gapcursor {
+  @apply relative w-full max-w-2xl mx-auto;
+}
+.echo-editor .tiptap .ProseMirror-gapcursor:after {
+  @apply border-t-black/40 dark:border-t-white/40 w-full -top-[1.5em] max-w-2xl mx-auto left-0 right-0;
+}
+.echo-editor .tiptap .iframe-wrapper.focus > div {
+  @apply outline-primary outline-4 outline;
+}
+.echo-editor .echo-editor-search-result {
+  @apply bg-yellow-300;
+}
+.echo-editor .echo-editor-search-result-current {
+  @apply bg-red-400;
 }
 
-/* Heading styles */
 .heading-0 {
   font-weight: 700;
   font-size: 16px;
 }
+
 .heading-1 {
   font-weight: 700;
   font-size: 28px;
   line-height: 1.6;
 }
+
 .heading-2 {
   font-weight: 700;
   font-size: 24px;
   line-height: 1.6;
 }
+
 .heading-3 {
   font-size: 20px;
   font-weight: 700;
   line-height: 1.6;
 }
+
 .heading-4 {
   font-size: 16px;
   font-weight: 700;
   line-height: 1.6;
 }
+
 .heading-5 {
   font-size: 14px;
   font-weight: 700;
   line-height: 1.6;
 }
+
 .heading-6 {
   font-size: 14px;
   font-weight: 700;

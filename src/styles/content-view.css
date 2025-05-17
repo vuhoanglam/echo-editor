@@ -1,460 +1,250 @@
+@charset "UTF-8";
 /**
  * Styles for rich text content rendering
  * This stylesheet defines the appearance of various elements in the rich text editor's content view,
  * including typography, headings, lists, blockquotes, code blocks, tables and other formatting elements.
  */
-
-@utility echoContentView {
+.EchoContentView {
   /* Typography */
-  p {
-    line-height: 1.625;
-    margin-bottom: 0.375rem;
-  }
-
-  p:first-child {
-    margin-top: 0;
-  }
-
-  p:last-child {
-    margin-bottom: 0;
-  }
-
   /* https://github.com/ueberdosis/tiptap/issues/412 */
-  p:empty::after {
-    content: '\00A0';
-  }
-
-  & > p {
-    margin-bottom: 0.375rem;
-  }
-
-  & > p:first-child {
-    margin-top: 0;
-  }
-
-  & > p:last-child {
-    margin-bottom: 0;
-  }
-
-  h1 {
-    font-size: 1.875rem;
-    line-height: 2.25rem;
-  }
-
-  h2 {
-    font-size: 1.5rem;
-    line-height: 2rem;
-  }
-
-  h3 {
-    font-size: 1.25rem;
-    line-height: 1.75rem;
-  }
-
-  h4 {
-    font-size: 1.125rem;
-    line-height: 1.75rem;
-  }
-
-  h5 {
-    font-size: 1rem;
-    line-height: 1.5rem;
-  }
-
-  h6 {
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-weight: 700;
-  }
-
-  h1:first-child,
-  h2:first-child,
-  h3:first-child,
-  h4:first-child,
-  h5:first-child,
-  h6:first-child {
-    margin-top: 0;
-  }
-
-  h1:last-child,
-  h2:last-child,
-  h3:last-child,
-  h4:last-child,
-  h5:last-child,
-  h6:last-child {
-    margin-bottom: 0;
-  }
-
-  h1,
-  h2,
-  h3 {
-    margin-top: 3rem;
-  }
-
-  h4,
-  h5,
-  h6 {
-    margin-top: 2rem;
-  }
-
-  a.link {
-    color: rgb(59 130 246);
-    font-weight: 800;
-  }
-
-  .dark a.link {
-    color: rgb(96 165 250);
-  }
-
-  mark {
-    background-color: rgb(239 68 68);
-    border-radius: 0.125rem;
-    box-decoration-break: clone;
-    color: inherit;
-    padding-top: 0.25rem;
-    padding-bottom: 0.25rem;
-  }
-
-  .dark mark {
-    background-color: rgb(248 113 113);
-  }
-
-  & img {
-    height: auto;
-    max-width: 100%;
-    display: block;
-  }
-
-  /* Indentation */
-  *[data-indent='1'] {
-    text-indent: 2em !important;
-  }
-  *[data-indent='2'] {
-    text-indent: 4em !important;
-  }
-  *[data-indent='3'] {
-    text-indent: 6em !important;
-  }
-  *[data-indent='4'] {
-    text-indent: 8em !important;
-  }
-  *[data-indent='5'] {
-    text-indent: 10em !important;
-  }
-  *[data-indent='6'] {
-    text-indent: 12em !important;
-  }
-  *[data-indent='7'] {
-    text-indent: 14em !important;
-  }
-
-  iframe {
-    width: 100%;
-    border: 1px solid var(--border);
-    margin-top: 0.5rem;
-    border-radius: 0.125rem;
-    height: 400px;
-  }
-
-  [data-type='horizontalRule'] {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-  }
-
-  [data-type='horizontalRule'] hr {
-    border: 0;
-    border-top: 1px solid rgba(0, 0, 0, 0.2);
-    background-color: rgba(0, 0, 0, 0.8);
-  }
-
-  .dark [data-type='horizontalRule'] hr {
-    border-top-color: rgba(255, 255, 255, 0.2);
-    background-color: rgba(255, 255, 255, 0.8);
-  }
-
   /* Block Quote */
-  .blockquote {
-    border-left: 4px solid rgb(64 64 64);
-    color: black;
-    padding: 0.5rem 1rem;
-    background-color: rgba(0, 0, 0, 0.8);
-    border-radius: 0.5rem;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-  }
-
-  .dark .blockquote {
-    border-left-color: rgb(212 212 212);
-    color: white;
-  }
-
   /* Columns */
-  [data-type='columns'] {
-    display: grid;
-    gap: 1rem;
-    margin-top: 3.5rem;
-    margin-bottom: 3rem;
-  }
-
-  [data-type='columns'].layout-sidebar-left {
-    grid-template-columns: 40fr 60fr;
-  }
-
-  [data-type='columns'].layout-sidebar-right {
-    grid-template-columns: 60fr 40fr;
-  }
-
-  [data-type='columns'].layout-two-column {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  [data-type='columns'].layout-three-column {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-
-  [data-type='columns'].layout-four-column {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-  }
-
-  [data-type='column'] {
-    overflow: auto;
-  }
-
-  code {
-    caret-color: white;
-    color: white;
-    background-color: rgb(23 23 23);
-    border-radius: 0.125rem;
-    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  }
-
-  code::selection {
-    background-color: rgba(255, 255, 255, 0.3);
-  }
-
-  pre {
-    caret-color: white;
-    background-color: rgb(64 64 64);
-    color: white;
-    border-radius: 0.25rem;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    padding: 1rem;
-    border: 1px solid black;
-  }
-
-  .dark pre {
-    background-color: rgb(23 23 23);
-    border-color: rgb(38 38 38);
-  }
-
-  pre *::selection {
-    background-color: rgba(255, 255, 255, 0.2);
-  }
-
-  pre code {
-    background-color: inherit;
-    color: inherit;
-    padding: 0;
-    box-shadow: none;
-  }
-
-  pre .hljs-comment,
-  pre .hljs-quote {
-    color: rgb(163 163 163);
-  }
-
-  pre .hljs-variable,
-  pre .hljs-template-variable,
-  pre .hljs-attribute,
-  pre .hljs-tag,
-  pre .hljs-name,
-  pre .hljs-regexp,
-  pre .hljs-link,
-  pre .hljs-name,
-  pre .hljs-selector-id,
-  pre .hljs-selector-class {
-    color: rgb(252 165 165);
-  }
-
-  pre .hljs-number,
-  pre .hljs-meta,
-  pre .hljs-built_in,
-  pre .hljs-builtin-name,
-  pre .hljs-literal,
-  pre .hljs-type,
-  pre .hljs-params {
-    color: rgb(251 146 60);
-  }
-
-  pre .hljs-string,
-  pre .hljs-symbol,
-  pre .hljs-bullet {
-    color: rgb(163 230 53);
-  }
-
-  pre .hljs-title,
-  pre .hljs-section {
-    color: rgb(253 224 71);
-  }
-
-  pre .hljs-keyword,
-  pre .hljs-selector-tag {
-    color: rgb(94 234 212);
-  }
-
-  pre .hljs-emphasis {
-    font-style: italic;
-  }
-
-  pre .hljs-strong {
-    font-weight: 700;
-  }
-
   /* List */
-  ol {
-    list-style-type: decimal;
-  }
-
-  ul {
-    list-style-type: disc;
-  }
-
-  ul,
-  ol {
-    padding: 0 2rem;
-    margin: 1.5rem 0;
-  }
-
-  ul:first-child,
-  ol:first-child {
-    margin-top: 0;
-  }
-
-  ul:last-child,
-  ol:last-child {
-    margin-bottom: 0;
-  }
-
-  ul ul,
-  ul ol,
-  ol ul,
-  ol ol,
-  ul li,
-  ol li {
-    margin: 0.25rem 0;
-  }
-
-  ul p,
-  ol p {
-    margin-top: 0;
-    margin-bottom: 0.25rem;
-  }
-
-  & > ul,
-  & > ol {
-    margin: 2rem 0;
-  }
-
-  & > ul:first-child,
-  & > ol:first-child {
-    margin-top: 0;
-  }
-
-  & > ul:last-child,
-  & > ol:last-child {
-    margin-bottom: 0;
-  }
-
-  ul[data-type='taskList'] {
-    list-style-type: none;
-    padding: 0;
-  }
-
-  ul[data-type='taskList'] p {
-    margin: 0;
-  }
-
-  ul[data-type='taskList'] li {
-    display: flex;
-  }
-
-  ul[data-type='taskList'] li > label {
-    flex-grow: 0;
-    flex-shrink: 0;
-    flex-basis: auto;
-    margin-top: 0.25rem;
-    margin-right: 0.5rem;
-    user-select: none;
-  }
-
-  ul[data-type='taskList'] li > div {
-    flex: auto;
-  }
-
-  ul[data-type='taskList'] li[data-checked='true'] {
-    text-decoration: line-through;
-  }
-
-  table {
-    border-collapse: collapse;
-    border-color: rgba(0, 0, 0, 0.1);
-    table-layout: fixed;
-    box-sizing: border-box;
-    overflow-x: auto;
-    overflow-y: hidden;
-    display: block;
-  }
-
-  .dark table {
-    border-color: rgba(255, 255, 255, 0.2);
-  }
-
-  table td,
-  table th {
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    min-width: 1em;
-    padding: 0.5rem;
-    box-sizing: border-box;
-    position: relative;
-    text-align: left;
-    vertical-align: top;
-    border-style: solid;
-  }
-
-  .dark table td,
-  .dark table th {
-    border-color: rgba(255, 255, 255, 0.2);
-  }
-
-  table td:first-of-type:not(a),
-  table th:first-of-type:not(a) {
-    margin-top: 0;
-  }
-
-  table td p,
-  table th p {
-    margin: 0;
-  }
-
-  table td p + p,
-  table th p + p {
-    margin-top: 0.75rem;
-  }
-
-  table th {
-    font-weight: 700;
-    text-align: left;
-  }
 }
+.EchoContentView p {
+  @apply leading-relaxed mb-1.5 first:mt-0 last:mb-0;
+}
+.EchoContentView p:empty::after {
+  content: " ";
+}
+.EchoContentView > p {
+  @apply mb-1.5 first:mt-0 last:mb-0;
+}
+.EchoContentView h1 {
+  @apply text-3xl;
+}
+.EchoContentView h2 {
+  @apply text-2xl;
+}
+.EchoContentView h3 {
+  @apply text-xl;
+}
+.EchoContentView h4 {
+  @apply text-lg;
+}
+.EchoContentView h5 {
+  @apply text-base;
+}
+.EchoContentView h6 {
+  @apply text-sm;
+}
+.EchoContentView h1,
+.EchoContentView h2,
+.EchoContentView h3,
+.EchoContentView h4,
+.EchoContentView h5,
+.EchoContentView h6 {
+  @apply font-bold first:mt-0 last:mb-0;
+}
+.EchoContentView h1,
+.EchoContentView h2,
+.EchoContentView h3 {
+  @apply mt-12;
+}
+.EchoContentView h4,
+.EchoContentView h5,
+.EchoContentView h6 {
+  @apply mt-8;
+}
+.EchoContentView a.link {
+  @apply text-blue-500 font-extrabold dark:text-blue-400;
+}
+.EchoContentView mark {
+  @apply bg-red-500 rounded-sm decoration-clone text-inherit py-1 px-0 dark:bg-red-400;
+}
+.EchoContentView img {
+  @apply h-auto max-w-full block;
+}
+.EchoContentView *[data-indent="1"] {
+  text-indent: 2em !important;
+}
+.EchoContentView *[data-indent="2"] {
+  text-indent: 4em !important;
+}
+.EchoContentView *[data-indent="3"] {
+  text-indent: 6em !important;
+}
+.EchoContentView *[data-indent="4"] {
+  text-indent: 8em !important;
+}
+.EchoContentView *[data-indent="5"] {
+  text-indent: 10em !important;
+}
+.EchoContentView *[data-indent="6"] {
+  text-indent: 12em !important;
+}
+.EchoContentView *[data-indent="7"] {
+  text-indent: 14em !important;
+}
+.EchoContentView iframe {
+  @apply w-full border border-border mt-2 rounded-sm h-[400px];
+}
+.EchoContentView [data-type=horizontalRule] {
+  @apply my-8 py-4;
+}
+.EchoContentView [data-type=horizontalRule] hr {
+  @apply border-0 border-t border-black/20 bg-black/80;
+  @apply dark:border-white/20 dark:bg-white/80;
+}
+.EchoContentView .blockquote {
+  @apply border-l-4 text-black border-l-neutral-700 py-2 px-4 bg-opacity-80 rounded-lg rounded-tl-none rounded-bl-none;
+  @apply dark:border-l-neutral-300 dark:text-white;
+}
+.EchoContentView [data-type=columns] {
+  @apply grid gap-4 mt-14 mb-12;
+}
+.EchoContentView [data-type=columns].layout-sidebar-left {
+  grid-template-columns: 40fr 60fr;
+}
+.EchoContentView [data-type=columns].layout-sidebar-right {
+  grid-template-columns: 60fr 40fr;
+}
+.EchoContentView [data-type=columns].layout-two-column {
+  grid-template-columns: 1fr 1fr;
+}
+.EchoContentView [data-type=columns].layout-three-column {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.EchoContentView [data-type=columns].layout-four-column {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.EchoContentView [data-type=column] {
+  @apply overflow-auto;
+}
+.EchoContentView code {
+  @apply caret-white text-white bg-neutral-900 rounded-sm shadow-lg font-mono;
+}
+.EchoContentView code::selection {
+  @apply bg-white/30;
+}
+.EchoContentView pre {
+  @apply caret-white bg-neutral-700 text-white rounded my-8 p-4 border border-black dark:bg-neutral-900 dark:border-neutral-800;
+}
+.EchoContentView pre *::selection {
+  @apply bg-white/20;
+}
+.EchoContentView pre code {
+  @apply bg-inherit text-inherit p-0 shadow-none;
+}
+.EchoContentView pre .hljs-comment,
+.EchoContentView pre .hljs-quote {
+  @apply text-neutral-400;
+}
+.EchoContentView pre .hljs-variable,
+.EchoContentView pre .hljs-template-variable,
+.EchoContentView pre .hljs-attribute,
+.EchoContentView pre .hljs-tag,
+.EchoContentView pre .hljs-name,
+.EchoContentView pre .hljs-regexp,
+.EchoContentView pre .hljs-link,
+.EchoContentView pre .hljs-name,
+.EchoContentView pre .hljs-selector-id,
+.EchoContentView pre .hljs-selector-class {
+  @apply text-red-300;
+}
+.EchoContentView pre .hljs-number,
+.EchoContentView pre .hljs-meta,
+.EchoContentView pre .hljs-built_in,
+.EchoContentView pre .hljs-builtin-name,
+.EchoContentView pre .hljs-literal,
+.EchoContentView pre .hljs-type,
+.EchoContentView pre .hljs-params {
+  @apply text-orange-300;
+}
+.EchoContentView pre .hljs-string,
+.EchoContentView pre .hljs-symbol,
+.EchoContentView pre .hljs-bullet {
+  @apply text-lime-300;
+}
+.EchoContentView pre .hljs-title,
+.EchoContentView pre .hljs-section {
+  @apply text-yellow-300;
+}
+.EchoContentView pre .hljs-keyword,
+.EchoContentView pre .hljs-selector-tag {
+  @apply text-teal-300;
+}
+.EchoContentView pre .hljs-emphasis {
+  font-style: italic;
+}
+.EchoContentView pre .hljs-strong {
+  font-weight: 700;
+}
+.EchoContentView ol {
+  @apply list-decimal;
+}
+.EchoContentView ul {
+  @apply list-disc;
+}
+.EchoContentView ul,
+.EchoContentView ol {
+  @apply py-0 px-8 my-6 first:mt-0 last:mb-0;
+}
+.EchoContentView ul ul,
+.EchoContentView ul ol,
+.EchoContentView ul li,
+.EchoContentView ol ul,
+.EchoContentView ol ol,
+.EchoContentView ol li {
+  @apply my-1;
+}
+.EchoContentView ul p,
+.EchoContentView ol p {
+  @apply mt-0 mb-1;
+}
+.EchoContentView > ul, .EchoContentView > ol {
+  @apply my-8 first:mt-0 last:mb-0;
+}
+.EchoContentView ul[data-type=taskList] {
+  @apply list-none p-0;
+}
+.EchoContentView ul[data-type=taskList] p {
+  @apply m-0;
+}
+.EchoContentView ul[data-type=taskList] li {
+  @apply flex;
+}
+.EchoContentView ul[data-type=taskList] li > label {
+  @apply grow-0 shrink-0 flex-auto mt-1 mr-2 select-none;
+}
+.EchoContentView ul[data-type=taskList] li > div {
+  @apply flex-auto;
+}
+.EchoContentView ul[data-type=taskList] li[data-checked=true] {
+  @apply line-through;
+}
+.EchoContentView table {
+  @apply border-collapse border-black/10 table-fixed box-border overflow-x-auto overflow-y-hidden block;
+  @apply dark:border-white/20;
+}
+.EchoContentView table td,
+.EchoContentView table th {
+  @apply border border-black/10 min-w-[1em] p-2 box-border relative text-left align-top border-solid;
+  @apply dark:border-white/20;
+}
+.EchoContentView table td:first-of-type:not(a),
+.EchoContentView table th:first-of-type:not(a) {
+  @apply mt-0;
+}
+.EchoContentView table td p,
+.EchoContentView table th p {
+  @apply m-0;
+}
+.EchoContentView table td p + p,
+.EchoContentView table th p + p {
+  @apply mt-3;
+}
+.EchoContentView table th {
+  @apply font-bold text-left;
+}
+

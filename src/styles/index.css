@@ -1,7 +1,5 @@
-@import "tailwindcss";
-
-/* Import theme variables and base styles */
-@import "./global.css";
+/* Import Tailwind CSS configuration */
+@import "./tailwind.css";
 
 /* Import editor styles */
 @import "./editor.css";
