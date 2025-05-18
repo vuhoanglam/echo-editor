@@ -97,7 +97,7 @@
   @apply dark:border-white/20 dark:bg-white/80;
 }
 .EchoContentView .blockquote {
-  @apply border-l-4 text-black border-l-neutral-700 py-2 px-4 bg-opacity-80 rounded-lg rounded-tl-none rounded-bl-none;
+  @apply border-l-4 text-black border-l-neutral-700 py-2 px-4 bg-black/80 rounded-lg rounded-tl-none rounded-bl-none;
   @apply dark:border-l-neutral-300 dark:text-white;
 }
 .EchoContentView [data-type=columns] {

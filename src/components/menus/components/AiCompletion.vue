@@ -4,6 +4,7 @@ import { Icon } from '@/components/icons'
 import { MenuItem } from '@/components/ui/menu'
 import { Separator } from '@/components/ui/separator'
 import { useLocale } from '@/locales'
+import type { MenuItem as MenuItemType } from '@/type'
 
 const props = defineProps({
   editor: {

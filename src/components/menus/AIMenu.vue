@@ -15,6 +15,7 @@ import { DOMSerializer } from 'prosemirror-model'
 import { useAIConversation } from '@/hooks/useAIConversation'
 import { DEFAULT_SHORTCUTS } from '@/extensions/AI/constants'
 import { Props as TippyProps } from 'tippy.js'
+import type { MenuItem } from '@/type'
 
 interface Props {
   editor: Editor
@@ -45,13 +46,6 @@ interface ShortcutItem {
   prompt: string
   icon?: string
   children?: ShortcutItem[]
-}
-
-interface MenuItem {
-  label: string
-  icon?: string
-  children?: MenuItem[]
-  [key: string]: any // 允许其他属性
 }
 
 interface CachedPrompt {

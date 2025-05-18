@@ -1,18 +1,16 @@
 import { Node } from '@tiptap/core'
 import ActionButton from './components/AIButton.vue'
-import { GeneralOptions } from '@/type'
+import { GeneralOptions, MenuItem } from '@/type'
 
-export interface MenuItem {
-  label: string
+export interface AIMenuItem extends MenuItem {
   prompt?: string
-  children?: MenuItem[]
 }
 export interface AIOptions extends GeneralOptions<AIOptions> {
   completions: (history: Array<{ role: string; content: string }>, signal?: AbortSignal) => Promise<any>
   /**
    * AI Shortcuts Menu
    */
-  shortcuts: MenuItem[]
+  shortcuts: AIMenuItem[]
 }
 
 export const AI = Node.create<AIOptions>({

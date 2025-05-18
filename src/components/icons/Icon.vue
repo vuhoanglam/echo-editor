@@ -18,5 +18,5 @@ if (!icon.value) {
 </script>
 
 <template>
-  <Icon :icon="icon" :class="cn('w-4 h-4', props.class)" />
+  <Icon :name="props.name" :icon="icon" :class="cn('size-4', props.class)" />
 </template>

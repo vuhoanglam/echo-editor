@@ -204,3 +204,21 @@ export interface EchoEditorEmits {
   (event: 'change', value: EchoEditorOnChange): void
   (event: 'update:modelValue', value: string | JSONContent): void
 }
+
+/**
+ * Represents a menu item in the editor UI.
+ */
+export interface MenuItem {
+  /** The display label for the menu item */
+  label: string
+  /** Optional icon name */
+  icon?: string
+  /** Optional array of child menu items */
+  children?: MenuItem[]
+  /** Optional flag to indicate if the item is hovered */
+  isHovered?: boolean
+  /** Optional flag to indicate if the item is selected */
+  isSelected?: boolean
+  /** Allow additional properties */
+  [key: string]: any
+}

@@ -44,15 +44,7 @@
 <script setup lang="ts">
 import { Icon } from '@/components/icons'
 import { reactive, onMounted, watch, ref } from 'vue'
-
-// 扩展 MenuItem 接口
-interface MenuItem {
-  label: string
-  isHovered?: boolean
-  isSelected?: boolean
-  children?: MenuItem[]
-  [key: string]: any
-}
+import type { MenuItem } from '@/type'
 
 const props = defineProps<{
   items: MenuItem[]

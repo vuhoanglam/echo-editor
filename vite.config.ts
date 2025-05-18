@@ -48,7 +48,7 @@ export default defineConfig({
     outDir: 'lib',
     lib: {
       entry: path.resolve(__dirname, 'src/index.ts'),
-      name: 'EchoEditor',
+      name: 'echo-editor',
     },
     rollupOptions: {
       output: {
